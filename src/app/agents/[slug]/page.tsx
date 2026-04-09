@@ -17,6 +17,7 @@ import { AGENTS, getAgentBySlug } from "@/_lib/agents-data";
 import { LISTINGS, formatPrice } from "@/_lib/listings-data";
 import { createMetadata } from "@/_lib/seo";
 import { CTABanner } from "@/_components/shared/CTABanner";
+import { AgentImage } from "@/_components/agents/AgentImage";
 
 export async function generateStaticParams() {
   return AGENTS.map((a) => ({ slug: a.slug }));
@@ -92,7 +93,7 @@ export default async function AgentProfilePage({
             <div>
               <Card className="sticky top-28 border-0 bg-white shadow-md">
                 <CardContent className="p-6 text-center">
-                  <div className="mx-auto h-40 w-40 rounded-full bg-linen" />
+                  <AgentImage src={agent.image} name={agent.name} size="xl" className="mx-auto" />
                   <h1 className="mt-4 font-heading text-2xl text-grove">
                     {agent.name}
                   </h1>

@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle, ArrowRight, Mail, Phone } from "lucide-react";
+import { CheckCircle, ArrowRight } from "lucide-react";
 import { createMetadata } from "@/_lib/seo";
 import { CTABanner } from "@/_components/shared/CTABanner";
+import { PageHero } from "@/_components/shared/PageHero";
+import { AgentImage } from "@/_components/agents/AgentImage";
 import { BUSINESS_INFO } from "@/_lib/constants";
+import { AGENTS } from "@/_lib/agents-data";
 
 export const metadata: Metadata = createMetadata({
   title: "About Us",
@@ -13,25 +16,6 @@ export const metadata: Metadata = createMetadata({
     "Meet the Citrus & Park team — Redlands real estate experts since 2006. Learn about our story, values, and commitment to the Inland Empire community.",
   path: "/about",
 });
-
-const AGENTS = [
-  {
-    name: "Veronica Ramos",
-    title: "Broker / Owner",
-    bio: "With nearly two decades of experience in the Redlands real estate market, Veronica founded Citrus & Park to provide a more personal, community-focused approach to buying and selling homes. Her deep knowledge of the Inland Empire and commitment to client satisfaction has made her one of the most trusted names in local real estate.",
-    specialties: ["Luxury Homes", "First-Time Buyers", "Investment Properties"],
-    email: "veronica@citrusandpark.com",
-    phone: "(909) 705-5275",
-  },
-  {
-    name: "Renee Stallone",
-    title: "Real Estate Agent",
-    bio: "Renee brings passion and dedication to every client relationship. Known for her attention to detail and tireless work ethic, she helps buyers and sellers navigate the market with confidence. Whether you're looking for your first home or downsizing, Renee makes the process seamless.",
-    specialties: ["Residential Sales", "Relocations", "Market Analysis"],
-    email: "renee@citrusandpark.com",
-    phone: "(909) 705-5275",
-  },
-];
 
 const VALUES = [
   {
@@ -59,22 +43,10 @@ const VALUES = [
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-grove pt-32 pb-16 sm:pt-40 sm:pb-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="font-heading text-4xl text-white sm:text-5xl">
-              About Citrus &amp; Park
-            </h1>
-            <p className="mt-4 text-lg text-white/70">
-              Since {BUSINESS_INFO.foundedYear}, we&apos;ve been helping
-              families find their perfect home in Redlands and the Inland
-              Empire. Real estate is more than a transaction — it&apos;s a life
-              milestone, and we treat it that way.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="About Citrus &amp; Park"
+        description={`Since ${BUSINESS_INFO.foundedYear}, we've been helping families find their perfect home in Redlands and the Inland Empire. Real estate is more than a transaction — it's a life milestone, and we treat it that way.`}
+      />
 
       {/* Story */}
       <section className="bg-cream py-16 sm:py-24">
@@ -159,57 +131,35 @@ export default function AboutPage() {
               dedicated to your success.
             </p>
           </div>
-          <div className="mt-12 grid gap-8 sm:grid-cols-2">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {AGENTS.map((agent) => (
-              <Card
-                key={agent.name}
-                className="overflow-hidden border-0 bg-white shadow-md"
-              >
-                <CardContent className="p-0">
-                  <div className="grid sm:grid-cols-5">
-                    <div className="flex items-center justify-center bg-linen sm:col-span-2">
-                      <div className="p-8">
-                        <div className="mx-auto h-32 w-32 rounded-full bg-grove/10" />
-                      </div>
-                    </div>
-                    <div className="p-6 sm:col-span-3">
-                      <h3 className="font-heading text-2xl text-grove">
-                        {agent.name}
-                      </h3>
-                      <p className="text-sm font-medium text-citrus">
-                        {agent.title}
-                      </p>
-                      <p className="mt-3 text-sm leading-relaxed text-slate">
-                        {agent.bio}
-                      </p>
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {agent.specialties.map((s) => (
-                          <span
-                            key={s}
-                            className="rounded-full bg-grove/10 px-3 py-1 text-xs font-medium text-grove"
-                          >
-                            {s}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="mt-4 flex flex-col gap-1 text-sm text-slate">
-                        <a
-                          href={`mailto:${agent.email}`}
-                          className="flex items-center gap-1.5 hover:text-citrus"
+              <Link key={agent.slug} href={`/agents/${agent.slug}`}>
+                <Card className="group h-full cursor-pointer overflow-hidden border-0 bg-white shadow-md transition-all hover:-translate-y-1 hover:shadow-xl">
+                  <CardContent className="flex flex-col items-center p-6 text-center">
+                    <AgentImage src={agent.image} name={agent.name} size="lg" />
+                    <h3 className="mt-4 font-heading text-xl text-grove">
+                      {agent.name}
+                    </h3>
+                    <p className="text-sm font-medium text-citrus">
+                      {agent.title}
+                    </p>
+                    <div className="mt-3 flex flex-wrap justify-center gap-2">
+                      {agent.specialties.map((s) => (
+                        <span
+                          key={s}
+                          className="rounded-full bg-grove/10 px-3 py-1 text-xs font-medium text-grove"
                         >
-                          <Mail className="h-3.5 w-3.5" /> {agent.email}
-                        </a>
-                        <a
-                          href={`tel:${agent.phone.replace(/\D/g, "")}`}
-                          className="flex items-center gap-1.5 hover:text-citrus"
-                        >
-                          <Phone className="h-3.5 w-3.5" /> {agent.phone}
-                        </a>
-                      </div>
+                          {s}
+                        </span>
+                      ))}
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                    <span className="mt-4 inline-flex items-center text-sm font-medium text-citrus">
+                      View Profile
+                      <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>

@@ -4,21 +4,17 @@ import { useEffect } from "react";
 
 export function TawkToChat() {
   useEffect(() => {
-    // Tawk.to integration
-    // Replace PROPERTY_ID and WIDGET_ID with actual values from tawk.to dashboard
-    const propertyId = process.env.NEXT_PUBLIC_TAWKTO_PROPERTY_ID;
-    const widgetId = process.env.NEXT_PUBLIC_TAWKTO_WIDGET_ID;
-
-    if (!propertyId || !widgetId) return;
-
     const s = document.createElement("script");
     s.async = true;
-    s.src = `https://embed.tawk.to/${propertyId}/${widgetId}`;
+    s.src = "https://embed.tawk.to/69d7fa059039251c39accd4f/1jlpqh937";
+    s.setAttribute("charset", "UTF-8");
     s.setAttribute("crossorigin", "*");
     document.head.appendChild(s);
 
     return () => {
-      document.head.removeChild(s);
+      if (document.head.contains(s)) {
+        s.remove();
+      }
     };
   }, []);
 

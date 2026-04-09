@@ -15,6 +15,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { BUSINESS_INFO } from "@/_lib/constants";
+import { PageHero } from "@/_components/shared/PageHero";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -31,20 +32,10 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-grove pt-32 pb-16 sm:pt-40 sm:pb-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="font-heading text-4xl text-white sm:text-5xl">
-              Get in Touch
-            </h1>
-            <p className="mt-4 text-lg text-white/70">
-              Ready to start your real estate journey? We&apos;d love to hear
-              from you. Reach out anytime — we&apos;re here to help.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Get in Touch"
+        description="Ready to start your real estate journey? We'd love to hear from you. Reach out anytime — we're here to help."
+      />
 
       {/* Content */}
       <section className="bg-cream py-16 sm:py-24">

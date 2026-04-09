@@ -31,6 +31,36 @@ export const AGENTS: Agent[] = [
     phone: "(909) 705-5275",
     image: "/images/agents/renee-stallone.jpg",
   },
+  {
+    slug: "elijah",
+    name: "Elijah",
+    title: "Real Estate Agent",
+    bio: "Elijah is a dedicated real estate professional committed to helping clients achieve their property goals in the Inland Empire. With a keen eye for value and a passion for the local market, he provides exceptional guidance for both buyers and sellers.\n\nHis energetic approach and strong negotiation skills make him an invaluable partner in any real estate transaction. Elijah takes pride in building lasting relationships and ensuring every client feels supported from start to finish.",
+    specialties: ["Buyer Representation", "Negotiations", "New Construction"],
+    email: "elijah@citrusandpark.com",
+    phone: "(909) 705-5275",
+    image: "/images/agents/elijah.jpg",
+  },
+  {
+    slug: "guy",
+    name: "Guy",
+    title: "Real Estate Agent",
+    bio: "Guy brings a wealth of local knowledge and a client-first mentality to every transaction. His deep understanding of the Redlands and Inland Empire markets allows him to provide insightful advice and strategic guidance.\n\nWhether you're buying your first home or investing in property, Guy's calm, professional approach ensures a smooth experience. He is committed to making the process transparent and stress-free for every client he serves.",
+    specialties: ["Investment Properties", "Market Analysis", "Property Valuation"],
+    email: "guy@citrusandpark.com",
+    phone: "(909) 705-5275",
+    image: "/images/agents/guy.jpg",
+  },
+  {
+    slug: "jennifer",
+    name: "Jennifer",
+    title: "Real Estate Agent",
+    bio: "Jennifer is passionate about helping families find their perfect home. Her warm, approachable style and thorough market knowledge make her a go-to agent for buyers and sellers throughout the Inland Empire.\n\nWith a background in customer service and a genuine love for the Redlands community, Jennifer goes above and beyond to ensure her clients' needs are met. She specializes in family homes and takes pride in matching people with properties that truly fit their lifestyle.",
+    specialties: ["Family Homes", "First-Time Buyers", "Staging Consultation"],
+    email: "jennifer@citrusandpark.com",
+    phone: "(909) 705-5275",
+    image: "/images/agents/jennifer.jpg",
+  },
 ];
 
 export function getAgentBySlug(slug: string): Agent | undefined {

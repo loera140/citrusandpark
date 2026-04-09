@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Phone, Mail } from "lucide-react";
 import { createMetadata } from "@/_lib/seo";
+import { PageHero } from "@/_components/shared/PageHero";
 import { BUSINESS_INFO } from "@/_lib/constants";
 
 export const metadata: Metadata = createMetadata({
@@ -14,19 +15,10 @@ export const metadata: Metadata = createMetadata({
 export default function BookPage() {
   return (
     <>
-      <section className="bg-grove pt-32 pb-16 sm:pt-40 sm:pb-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="font-heading text-4xl text-white sm:text-5xl">
-              Book a Consultation
-            </h1>
-            <p className="mt-4 text-lg text-white/70">
-              Schedule a free, no-obligation consultation with one of our
-              agents. We&apos;ll discuss your goals and how we can help.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Book a Consultation"
+        description="Schedule a free, no-obligation consultation with one of our agents. We'll discuss your goals and how we can help."
+      />
 
       <section className="bg-cream py-16 sm:py-24">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">

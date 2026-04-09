@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Bed, Bath, Ruler, Search, SlidersHorizontal } from "lucide-react";
 import { createMetadata } from "@/_lib/seo";
+import { PageHero } from "@/_components/shared/PageHero";
 
 export const metadata: Metadata = createMetadata({
   title: "Homes for Sale in Redlands, CA",
@@ -34,39 +35,29 @@ function formatPrice(price: number) {
 export default function ListingsPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-grove pt-32 pb-16 sm:pt-40 sm:pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="font-heading text-4xl text-white sm:text-5xl">
-              Find Your Home
-            </h1>
-            <p className="mt-4 text-lg text-white/70">
-              Explore available properties in Redlands, Loma Linda, Highland,
-              Yucaipa, and the greater Inland Empire.
-            </p>
+      <PageHero
+        title="Find Your Home"
+        description="Explore available properties in Redlands, Loma Linda, Highland, Yucaipa, and the greater Inland Empire."
+      >
+        {/* Search Bar */}
+        <div className="mx-auto mt-8 flex max-w-2xl gap-3">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/50" />
+            <Input
+              placeholder="Search by address, city, or zip..."
+              className="h-12 border-white/20 bg-white/10 pl-10 text-white placeholder:text-white/50"
+            />
           </div>
-
-          {/* Search Bar */}
-          <div className="mx-auto mt-8 flex max-w-2xl gap-3">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate" />
-              <Input
-                placeholder="Search by address, city, or zip..."
-                className="h-12 border-white/20 bg-white/10 pl-10 text-white placeholder:text-white/50"
-              />
-            </div>
-            <Button
-              size="lg"
-              variant="outline"
-              className="h-12 border-white/20 bg-white/10 text-white hover:bg-white/20 hover:text-white"
-            >
-              <SlidersHorizontal className="mr-2 h-4 w-4" />
-              Filters
-            </Button>
-          </div>
+          <Button
+            size="lg"
+            variant="outline"
+            className="h-12 border-white/20 bg-white/10 text-white hover:bg-white/20 hover:text-white"
+          >
+            <SlidersHorizontal className="mr-2 h-4 w-4" />
+            Filters
+          </Button>
         </div>
-      </section>
+      </PageHero>
 
       {/* Listings Grid */}
       <section className="bg-cream py-12 sm:py-16">

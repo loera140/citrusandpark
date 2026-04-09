@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Calendar } from "lucide-react";
 import { createMetadata } from "@/_lib/seo";
+import { PageHero } from "@/_components/shared/PageHero";
 import { NewsletterSignup } from "@/_components/home/NewsletterSignup";
 
 export const metadata: Metadata = createMetadata({
@@ -22,6 +24,7 @@ const SAMPLE_POSTS = [
     category: "Market Updates",
     date: "2026-04-01",
     readTime: "5 min read",
+    image: "/images/blog/market-update.jpg",
   },
   {
     slug: "best-neighborhoods-redlands-ca",
@@ -31,6 +34,7 @@ const SAMPLE_POSTS = [
     category: "Neighborhood Guides",
     date: "2026-03-15",
     readTime: "8 min read",
+    image: "/images/blog/neighborhoods.jpg",
   },
   {
     slug: "first-time-home-buyer-guide-inland-empire",
@@ -40,6 +44,7 @@ const SAMPLE_POSTS = [
     category: "Buyer Tips",
     date: "2026-03-01",
     readTime: "10 min read",
+    image: "/images/blog/first-time-buyer.jpg",
   },
   {
     slug: "selling-your-home-in-spring-2026",
@@ -49,6 +54,7 @@ const SAMPLE_POSTS = [
     category: "Seller Tips",
     date: "2026-02-15",
     readTime: "4 min read",
+    image: "/images/blog/selling-spring.jpg",
   },
 ];
 
@@ -63,20 +69,10 @@ function formatDate(dateStr: string) {
 export default function BlogPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-grove pt-32 pb-16 sm:pt-40 sm:pb-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="font-heading text-4xl text-white sm:text-5xl">
-              Real Estate Blog
-            </h1>
-            <p className="mt-4 text-lg text-white/70">
-              Market insights, neighborhood guides, and expert advice from the
-              Citrus &amp; Park team.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Real Estate Blog"
+        description="Market insights, neighborhood guides, and expert advice from the Citrus & Park team."
+      />
 
       {/* Blog Grid */}
       <section className="bg-cream py-12 sm:py-16">
@@ -85,8 +81,15 @@ export default function BlogPage() {
             {SAMPLE_POSTS.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`}>
                 <Card className="group h-full cursor-pointer overflow-hidden border-0 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                  {/* Image placeholder */}
-                  <div className="aspect-[16/9] bg-linen" />
+                  <div className="relative aspect-[16/9] overflow-hidden bg-linen">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                    />
+                  </div>
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3">
                       <Badge

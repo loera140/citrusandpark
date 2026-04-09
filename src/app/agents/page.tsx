@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Mail, Phone, ArrowRight } from "lucide-react";
 import { createMetadata } from "@/_lib/seo";
 import { AGENTS } from "@/_lib/agents-data";
 import { CTABanner } from "@/_components/shared/CTABanner";
+import { PageHero } from "@/_components/shared/PageHero";
+import { AgentImage } from "@/_components/agents/AgentImage";
 
 export const metadata: Metadata = createMetadata({
   title: "Our Agents",
@@ -17,29 +18,24 @@ export const metadata: Metadata = createMetadata({
 export default function AgentsPage() {
   return (
     <>
-      <section className="bg-grove pt-32 pb-16 sm:pt-40 sm:pb-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="font-heading text-4xl text-white sm:text-5xl">
-              Our Agents
-            </h1>
-            <p className="mt-4 text-lg text-white/70">
-              Meet the experienced professionals who make Citrus &amp; Park the
-              most trusted real estate team in Redlands.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Our Agents"
+        description="Meet the experienced professionals who make Citrus & Park the most trusted real estate team in Redlands."
+      />
 
       <section className="bg-cream py-16 sm:py-24">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 sm:grid-cols-2">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {AGENTS.map((agent) => (
               <Link key={agent.slug} href={`/agents/${agent.slug}`}>
                 <Card className="group h-full cursor-pointer overflow-hidden border-0 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                  <div className="aspect-[4/3] bg-linen">
-                    <div className="flex h-full items-center justify-center">
-                      <div className="h-32 w-32 rounded-full bg-grove/10" />
+                  <div className="bg-linen py-8">
+                    <div className="flex justify-center">
+                      <AgentImage
+                        src={agent.image}
+                        name={agent.name}
+                        size="lg"
+                      />
                     </div>
                   </div>
                   <CardContent className="p-6 text-center">
