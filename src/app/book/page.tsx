@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, Phone, Mail } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import { createMetadata } from "@/_lib/seo";
 import { PageHero } from "@/_components/shared/PageHero";
+import { CalEmbed } from "@/_components/shared/CalEmbed";
 import { BUSINESS_INFO } from "@/_lib/constants";
 
 export const metadata: Metadata = createMetadata({
@@ -22,25 +22,11 @@ export default function BookPage() {
 
       <section className="bg-cream py-16 sm:py-24">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <Card className="overflow-hidden border-0 bg-white shadow-lg">
-            <CardContent className="p-0">
-              {/* Cal.com Embed Placeholder */}
-              <div className="flex min-h-[500px] items-center justify-center bg-linen p-8">
-                <div className="text-center">
-                  <Calendar className="mx-auto h-16 w-16 text-grove/30" />
-                  <p className="mt-4 font-heading text-xl text-grove">
-                    Scheduling Widget
-                  </p>
-                  <p className="mt-2 text-sm text-slate">
-                    Cal.com or Calendly embed will be integrated here.
-                  </p>
-                  <p className="mt-1 text-xs text-slate/60">
-                    Choose a date and time that works for you.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <div className="overflow-hidden rounded-2xl bg-white shadow-lg">
+            <div className="min-h-[600px]">
+              <CalEmbed />
+            </div>
+          </div>
 
           {/* Alternative Contact */}
           <div className="mt-8 text-center">
