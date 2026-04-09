@@ -111,3 +111,17 @@
     @apply font-heading;
   }
 }
+
+/* Hero Ken Burns slow zoom animation */
+@keyframes slow-zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 8s ease-out forwards;
+}
