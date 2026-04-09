@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Serif_Display, Plus_Jakarta_Sans } from "next/font/google";
 import { Header } from "@/_components/layout/Header";
 import { Footer } from "@/_components/layout/Footer";
+import { TawkToChat } from "@/_components/shared/TawkToChat";
 import { SITE_NAME, SITE_DESCRIPTION, BUSINESS_INFO } from "@/_lib/constants";
 import { localBusinessJsonLd } from "@/_lib/seo";
 import "./globals.css";
@@ -79,6 +80,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <TawkToChat />
       </body>
     </html>
   );

@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+# Host
+Host: https://www.citrusandpark.com
+
+# Sitemaps
+Sitemap: https://www.citrusandpark.com/sitemap.xml
